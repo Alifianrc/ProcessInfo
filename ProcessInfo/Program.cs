@@ -13,7 +13,7 @@ class Program
                 Console.Clear();
 
                 // Get the process ID for the process you want to monitor
-                int processId = Process.GetProcessesByName("your_process_name")[0].Id;
+                int processId = Process.GetProcessesByName("Server")[0].Id;
 
                 // Get the process object for the specified process ID
                 Process process = Process.GetProcessById(processId);
