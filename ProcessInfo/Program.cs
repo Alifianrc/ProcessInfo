@@ -13,7 +13,7 @@ class Program
                 Console.Clear();
 
                 // Get the process ID for the process you want to monitor
-                int processId = Process.GetProcessesByName("Server")[0].Id;
+                int processId = Process.GetProcessesByName("your_process_name")[0].Id;
 
                 // Get the process object for the specified process ID
                 Process process = Process.GetProcessById(processId);
@@ -21,18 +21,14 @@ class Program
                 // Get the total CPU time for the process
                 TimeSpan totalCpuTime = process.TotalProcessorTime;
 
-                // Get the amount of time that the process has been running
-                TimeSpan runningTime = DateTime.Now - process.StartTime;
+                // Wait for a short period of time to calculate the CPU usage
+                Thread.Sleep(500);
 
-                // Get the number of CPU cores
-                int cpuCount = Environment.ProcessorCount;
+                // Get the CPU time for the process after the wait
+                TimeSpan currentCpuTime = process.TotalProcessorTime;
 
                 // Calculate the CPU usage as a percentage
-                double cpuUsage = (totalCpuTime.TotalMilliseconds / runningTime.TotalMilliseconds / cpuCount) * 100;
-
-                Console.WriteLine("Total CPU Time : {0}", totalCpuTime);
-                Console.WriteLine("Running Time : {0}", runningTime);
-                Console.WriteLine("CPU Count : {0}\n", cpuCount);
+                double cpuUsage = ((currentCpuTime - totalCpuTime).TotalMilliseconds / (double)(Environment.ProcessorCount * 500)) * 100;
 
                 // Display the CPU usage percentage
                 Console.WriteLine("CPU Usage: {0}%", cpuUsage);
@@ -59,7 +55,7 @@ class Program
             {
                 Console.WriteLine(ex.ToString());
             }
-            Thread.Sleep(1000);
+            Thread.Sleep(500);
         }
     }
 }
