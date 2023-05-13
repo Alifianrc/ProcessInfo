@@ -30,6 +30,10 @@ class Program
                 // Calculate the CPU usage as a percentage
                 double cpuUsage = (totalCpuTime.TotalMilliseconds / runningTime.TotalMilliseconds / cpuCount) * 100;
 
+                Console.WriteLine("Total CPU Time : {0}", totalCpuTime);
+                Console.WriteLine("Running Time : {0}", runningTime);
+                Console.WriteLine("CPU Count : {0}\n", cpuCount);
+
                 // Display the CPU usage percentage
                 Console.WriteLine("CPU Usage: {0}%", cpuUsage);
 
