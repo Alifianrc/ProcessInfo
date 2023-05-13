@@ -24,8 +24,11 @@ class Program
                 // Get the amount of time that the process has been running
                 TimeSpan runningTime = DateTime.Now - process.StartTime;
 
+                // Get the number of CPU cores
+                int cpuCount = Environment.ProcessorCount;
+
                 // Calculate the CPU usage as a percentage
-                double cpuUsage = (totalCpuTime.TotalMilliseconds / runningTime.TotalMilliseconds) * 100;
+                double cpuUsage = (totalCpuTime.TotalMilliseconds / runningTime.TotalMilliseconds / cpuCount) * 100;
 
                 // Display the CPU usage percentage
                 Console.WriteLine("CPU Usage: {0}%", cpuUsage);
