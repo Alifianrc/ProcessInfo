@@ -32,6 +32,24 @@ class Program
 
                 // Display the CPU usage percentage
                 Console.WriteLine("CPU Usage: {0}%", cpuUsage);
+
+                // -----------------------------------------------------------------------------
+
+                // Get the working set size for the process (in bytes)
+                long workingSetSize = process.WorkingSet64;
+
+                // Get the total physical memory installed on the system (in bytes)
+                ulong totalMemory = 0;
+                var memInfo = new System.IO.StreamReader("/proc/meminfo");
+                var totalMemoryLine = memInfo.ReadLine();
+                var totalMemoryStr = new string(totalMemoryLine.Where(char.IsDigit).ToArray());
+                totalMemory = ulong.Parse(totalMemoryStr) * 1024;
+
+                // Calculate the RAM usage as a percentage
+                double ramUsage = ((double)workingSetSize / (double)totalMemory) * 100;
+
+                // Display the RAM usage percentage
+                Console.WriteLine("RAM Usage: {0}%", ramUsage);
             }
             catch (Exception ex)
             {
