@@ -10,6 +10,8 @@ class Program
         {
             try
             {
+                Console.Clear();
+
                 // Get the process ID for the process you want to monitor
                 int processId = Process.GetProcessesByName("Server")[0].Id;
 
@@ -32,7 +34,6 @@ class Program
             {
                 Console.WriteLine(ex.ToString());
             }
-            Console.Clear();
             Thread.Sleep(1000);
         }
     }
