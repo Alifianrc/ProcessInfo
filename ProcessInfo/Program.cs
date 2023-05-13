@@ -20,13 +20,13 @@ class Program
                 TimeSpan totalCpuTime = process.TotalProcessorTime;
 
                 // Wait for a short period of time to calculate the CPU usage
-                Thread.Sleep(500);
+                Thread.Sleep(300);
 
                 // Get the CPU time for the process after the wait
                 TimeSpan currentCpuTime = process.TotalProcessorTime;
 
                 // Calculate the CPU usage as a percentage
-                double cpuUsage = ((currentCpuTime - totalCpuTime).TotalMilliseconds / (double)(Environment.ProcessorCount * 500)) * 100;
+                double cpuUsage = ((currentCpuTime - totalCpuTime).TotalMilliseconds / (double)(Environment.ProcessorCount * 300)) * 100;
 
                 Console.Clear();
                 Console.WriteLine("CPU Time: {0}", currentCpuTime.TotalMilliseconds);
